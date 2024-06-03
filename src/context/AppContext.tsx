@@ -9,7 +9,7 @@ import React, { ReactNode, Reducer, createContext, useReducer } from 'react'
 
 // Initial landing state
 const initialState: IInitialLanding = {
-  orders: [],
+  orders: JSON.parse(localStorage.getItem('orders') as string) || [],
 }
 
 // Create Reducer
@@ -48,6 +48,9 @@ const AppReducer: Reducer<
 > = (state, action) => {
   switch (action.type) {
     case 'set_order': {
+      const tmp = [...state.orders, action.payload]
+
+      localStorage.setItem('orders', JSON.stringify(tmp))
       return {
         ...state,
         order: [...state.orders, action.payload],

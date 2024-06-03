@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material'
 import { useFormik } from 'formik'
+import Link from 'next/link'
 import { useContext } from 'react'
 import * as yup from 'yup'
 
@@ -100,9 +101,9 @@ export default function Home() {
                       <MenuItem value="">
                         <p>None</p>
                       </MenuItem>
-                      <MenuItem value={'whatsapp'}>WhatsApp</MenuItem>
-                      <MenuItem value={'call'}>Call</MenuItem>
-                      <MenuItem value={'email'}>Email</MenuItem>
+                      <MenuItem value={'Whatsapp'}>WhatsApp</MenuItem>
+                      <MenuItem value={'Call'}>Call</MenuItem>
+                      <MenuItem value={'Email'}>Email</MenuItem>
                     </Select>
                     <FormHelperText>{formik.errors.sourceOrder}</FormHelperText>
                   </FormControl>
@@ -184,6 +185,15 @@ export default function Home() {
                     Submit
                   </Button>
                 </form>
+                <Button
+                  LinkComponent={Link}
+                  href="/admin"
+                  variant="text"
+                  className="w-full"
+                  size="small"
+                >
+                  Halaman Admin
+                </Button>
               </Box>
             </CustomPaper>
           </Box>
