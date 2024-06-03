@@ -28,7 +28,14 @@ export default function Home() {
       .matches(/^[0-9]\d*$/, 'Phone number is not valid, should be 08xxxxxxxxx')
       .required()
       .label('Nomor Hp'),
-    qty: yup.string().required().label('Jumlah Roti'),
+    qty: yup
+      .string()
+      .matches(
+        /^\d*$/,
+        ({ label }: { label: string }) => `${label} must be number only`
+      )
+      .required()
+      .label('Jumlah Roti'),
     desc: yup.string().required().label('Keterangan'),
   })
   const formik = useFormik({
