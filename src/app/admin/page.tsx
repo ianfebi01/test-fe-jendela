@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react' // React Data Grid Component
 import 'ag-grid-community/styles/ag-grid.css' // Mandatory CSS required by the grid
 import 'ag-grid-community/styles/ag-theme-quartz.css' // Optional Theme applied to the grid
@@ -11,9 +11,13 @@ export default function DashboardPage() {
 
   const { orders } = state
 
-  const groupedOrders = Object.groupBy(orders, ({ sourceOrder }) => sourceOrder)
+  const groupedOrders = useMemo(() => {
+    return Object.groupBy(orders, ({ sourceOrder }) => sourceOrder)
+  }, [orders])
   // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState(orders)
+  const rowData = useMemo(() => {
+    return orders
+  }, [orders])
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefsEmail, setColDefsEmail] = useState([
