@@ -1,10 +1,13 @@
 
 export interface IInitialLanding  {
     orders: IOrder[]
+    auth: boolean
 }
 
 export type ActionMapDefaultReducer = {
     set_order: IOrder 
+    set_login: boolean
+    set_logout: boolean
   };
 
 

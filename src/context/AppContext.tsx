@@ -3,13 +3,13 @@ import { IActions } from '@/types/context'
 import {
   ActionMapDefaultReducer,
   IInitialLanding,
-  IOrder,
 } from '@/types/context/app-context'
 import React, { ReactNode, Reducer, createContext, useReducer } from 'react'
 
 // Initial landing state
 const initialState: IInitialLanding = {
   orders: JSON.parse(localStorage.getItem('orders') as string) || [],
+  auth: false,
 }
 
 // Create Reducer
@@ -54,6 +54,18 @@ const AppReducer: Reducer<
       return {
         ...state,
         order: [...state.orders, action.payload],
+      }
+    }
+    case 'set_login': {
+      return {
+        ...state,
+        auth: true,
+      }
+    }
+    case 'set_logout': {
+      return {
+        ...state,
+        auth: false,
       }
     }
     default: {
