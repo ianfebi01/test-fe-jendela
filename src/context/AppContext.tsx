@@ -9,13 +9,7 @@ import React, { ReactNode, Reducer, createContext, useReducer } from 'react'
 
 // Initial landing state
 const initialState: IInitialLanding = {
-  order: {
-    sourceOrder: '',
-    name: '',
-    phone: '',
-    qty: '',
-    desc: '',
-  },
+  orders: [],
 }
 
 // Create Reducer
@@ -56,9 +50,7 @@ const AppReducer: Reducer<
     case 'set_order': {
       return {
         ...state,
-        order: {
-          ...action.payload,
-        },
+        order: [...state.orders, action.payload],
       }
     }
     default: {

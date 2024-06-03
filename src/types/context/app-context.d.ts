@@ -1,6 +1,6 @@
 
 export interface IInitialLanding  {
-    order: IOrder
+    orders: IOrder[]
 }
 
 export type ActionMapDefaultReducer = {

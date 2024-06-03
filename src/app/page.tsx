@@ -24,7 +24,7 @@ export default function Home() {
     name: yup.string().min(2).max(50).required().label('Nama'),
     phone: yup
       .string()
-      .matches(/^[0-9]\d*$/, 'Phone number is not valid')
+      .matches(/^[0-9]\d*$/, 'Phone number is not valid, should be 08xxxxxxxxx')
       .required()
       .label('Nomor Hp'),
     qty: yup.string().required().label('Jumlah Roti'),
